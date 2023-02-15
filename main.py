@@ -51,7 +51,7 @@ btn_frame = Frame(root)
 btn_frame.pack(pady = 20)
 
 def deleteItem():
-    pass
+    td_listbox.delete(ANCHOR)
 
 def addItem():
     pass
