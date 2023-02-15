@@ -26,7 +26,6 @@ td_listbox = Listbox(frame,
                   activestyle = "none"
                   )
 
-td_listbox.pack(side = LEFT, fill = BOTH)
 
 list_content = ["Eat",
                 "Code"
@@ -43,6 +42,8 @@ td_scrollbar.pack(side = RIGHT, fill = BOTH)
 
 td_listbox.config(yscrollcommand = td_scrollbar.set)
 td_scrollbar.config(command = td_listbox.yview)
+
+td_listbox.pack(side = LEFT, fill = BOTH)
 
 td_entrybox = Entry(root, font = ("Helvetica"))
 td_entrybox.pack(pady = 20)
