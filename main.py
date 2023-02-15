@@ -54,7 +54,8 @@ def deleteItem():
     td_listbox.delete(ANCHOR)
 
 def addItem():
-    pass
+    td_listbox.insert(END, td_entrybox.get())
+    td_entrybox.delete(0, END)
 
 def selectItem():
     pass
