@@ -27,8 +27,8 @@ td_listbox = Listbox(frame,
                   )
 
 
-list_content = ["Eat",
-                "Code"
+list_content = ["Code",
+                "Eat",
                 "Sleep", 
                 "Repeat"
                 ]
@@ -59,19 +59,34 @@ def addItem():
     td_entrybox.delete(0, END)
 
 def selectItem():
-    pass
-
+    td_listbox.itemconfig(
+        td_listbox.curselection(),
+        fg="#dedede"
+    )
+    td_listbox.select_clear(0,END)
+    
 def unselectItem():
+    td_listbox.itemconfig(
+        td_listbox.curselection(),
+        fg="#464646"
+    )
+    td_listbox.select_clear(0,END)
+    
+def deleteSelected():
     pass
+        
+        
 
 delete_btn = Button(btn_frame, text = "DELETE", command = deleteItem)
 add_btn = Button(btn_frame, text = "ADD", command = addItem)
 select_btn = Button(btn_frame, text = "SELECT", command = selectItem)
 unselect_btn = Button(btn_frame, text = "UNSELECT", command = unselectItem)
+delete_selected_btn = Button(btn_frame, text = "DELETE SELECTED", command = deleteSelected)
 
 delete_btn.grid(row = 0, column = 0)
 add_btn.grid(row = 0, column = 1, padx = 20)
 select_btn.grid(row = 0, column = 2, padx = 20)
 unselect_btn.grid(row = 0, column = 3, padx = 20)
+delete_selected_btn.grid(row = 0, column = 4)
 
 root.mainloop()
