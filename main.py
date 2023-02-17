@@ -73,7 +73,12 @@ def unselectItem():
     td_listbox.select_clear(0,END)
     
 def deleteSelected():
-    pass
+    count = 0
+    while count < td_listbox.size():
+        if td_listbox.itemcget(count, "fg") == "#dedede":
+            td_listbox.delete(td_listbox.index(count))
+        
+        count += 1
         
         
 
