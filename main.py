@@ -45,7 +45,7 @@ td_scrollbar.config(command = td_listbox.yview)
 
 td_listbox.pack(side = LEFT, fill = BOTH)
 
-td_entrybox = Entry(root, font = ("Helvetica"))
+td_entrybox = Entry(root, font = ("Arial Rounded MT Bold", 24), width = 26)
 td_entrybox.pack(pady = 20)
 
 btn_frame = Frame(root)
@@ -78,7 +78,8 @@ def deleteSelected():
         if td_listbox.itemcget(count, "fg") == "#dedede":
             td_listbox.delete(td_listbox.index(count))
         
-        count += 1
+        else:
+            count += 1
         
         
 
