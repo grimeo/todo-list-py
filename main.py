@@ -89,7 +89,7 @@ def openList():
     pass        
 
 def clearList():
-    pass        
+    td_listbox.delete(0,END)
 
 
 td_menu = Menu(root)
