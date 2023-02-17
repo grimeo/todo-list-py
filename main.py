@@ -29,10 +29,11 @@ td_listbox = Listbox(frame,
                   )
 
 
-list_content = ["Code",
+list_content = [
                 "Eat",
                 "Sleep", 
-                "Repeat"
+                "Repeat",
+                "Code"
                 ]
 
 for item in list_content:
@@ -135,6 +136,50 @@ def openList():
 def clearList():
     td_listbox.delete(0,END)
     
+def sortAscending():
+    tdList = list(td_listbox.get(0, END))
+    tdList = sorAsctList(tdList)
+    td_listbox.delete(0,END)
+    for item in tdList:
+        td_listbox.insert(END, item)
+    
+def sortDescending():
+    tdList = list(td_listbox.get(0, END))
+    tdList = sorDestList(tdList)
+    td_listbox.delete(0,END)
+    for item in tdList:
+        td_listbox.insert(END, item)
+
+def sorAsctList(array):
+    greaterElems = []
+    lesserElems = []
+    arrlen = len(array)
+    if arrlen <= 1:
+        return array
+    else:
+        pivot = array.pop()
+    for element in array:
+        if element > pivot:
+            greaterElems.append(element)
+        else:
+            lesserElems.append(element)
+    return sorAsctList(lesserElems) + [pivot] + sorAsctList(greaterElems)
+
+def sorDestList(array):
+    greaterElems = []
+    lesserElems = []
+    arrlen = len(array)
+    if arrlen <= 1:
+        return array
+    else:
+        pivot = array.pop()
+    for element in array:
+        if element < pivot:
+            greaterElems.append(element)
+        else:
+            lesserElems.append(element)
+    return sorDestList(lesserElems) + [pivot] + sorDestList(greaterElems)
+
 
 td_menu = Menu(root)
 root.config(menu = td_menu)
@@ -152,11 +197,17 @@ add_btn = Button(btn_frame, text = "ADD", command = addItem)
 select_btn = Button(btn_frame, text = "SELECT", command = selectItem)
 unselect_btn = Button(btn_frame, text = "UNSELECT", command = unselectItem)
 delete_selected_btn = Button(btn_frame, text = "DELETE SELECTED", command = deleteSelected)
+sort_asc_btn = Button(btn_frame, text = "Sort Ascending", command = sortAscending)
+sort_des_btn = Button(btn_frame, text = "Sort Descending", command = sortDescending)
+
 
 delete_btn.grid(row = 0, column = 0)
 add_btn.grid(row = 0, column = 1, padx = 20)
 select_btn.grid(row = 0, column = 2, padx = 20)
 unselect_btn.grid(row = 0, column = 3, padx = 20)
 delete_selected_btn.grid(row = 0, column = 4)
+sort_asc_btn.grid(row = 1, column = 1, pady = 20    )
+sort_des_btn.grid(row = 1, column = 2, padx = 20)
+
 
 root.mainloop()
