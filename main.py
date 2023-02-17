@@ -29,15 +29,15 @@ td_listbox = Listbox(frame,
                   )
 
 
-list_content = [
-                "Eat",
-                "Sleep", 
-                "Repeat",
-                "Code"
-                ]
+# list_content = [
+#                 "Eat",
+#                 "Sleep", 
+#                 "Repeat",
+#                 "Code"
+#                 ]
 
-for item in list_content:
-    td_listbox.insert(END, item)
+# for item in list_content:
+#     td_listbox.insert(END, item)
     
 
 td_scrollbar = Scrollbar(frame)
