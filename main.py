@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter.font import Font
+from tkinter import filedialog
+import pickle
 
 root = Tk()
 root.title('To Do')
@@ -83,14 +85,56 @@ def deleteSelected():
         
 
 def saveList():
-    pass        
+    td_file_name = filedialog.asksaveasfilename(
+        initialdir = "C:\\Users\\Flynn\\Desktop\\3Y-1S\\DSA\\todo-finals",
+        title = "Save File",
+        filetypes = (
+            ("Dat Files","*.dat"), 
+            ("All Files", "*.*")
+            )
+        )
+    if td_file_name:
+        if td_file_name.endswith(".dat"):
+            pass
+        else:
+            td_file_name = f'{td_file_name}.dat'
+        
+        count = 0
+        while count < td_listbox.size():
+            if td_listbox.itemcget(count, "fg") == "#dedede":
+                td_listbox.delete(td_listbox.index(count))
+            
+            else:
+                count += 1
+                
+        list = td_listbox.get(0, END)
+        
+        td_output_file = open(td_file_name, 'wb')
+        
+        pickle.dump(list, td_output_file)
 
 def openList():
-    pass        
+    td_file_name = filedialog.askopenfilename(
+        initialdir = "C:\\Users\\Flynn\\Desktop\\3Y-1S\\DSA\\todo-finals",
+        title = "Open File",
+        filetypes = (
+            ("Dat Files","*.dat"), 
+            ("All Files", "*.*")
+            )
+        )     
+    if td_file_name:
+        td_listbox.delete(0, END)
+        
+        td_input_file = open(td_file_name, 'rb')
+        
+        list = pickle.load(td_input_file)
+        
+        for item in list:
+            td_listbox.insert(END, item)
 
 def clearList():
     td_listbox.delete(0,END)
-
+    
 
 td_menu = Menu(root)
 root.config(menu = td_menu)
