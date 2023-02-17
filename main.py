@@ -81,7 +81,27 @@ def deleteSelected():
         else:
             count += 1
         
-        
+
+def saveList():
+    pass        
+
+def openList():
+    pass        
+
+def clearList():
+    pass        
+
+
+td_menu = Menu(root)
+root.config(menu = td_menu)
+
+td_file_menu = Menu(td_menu, tearoff = False)
+td_menu.add_cascade(label = "File", menu = td_file_menu)
+
+td_file_menu.add_command(label="Save List", command = saveList)
+td_file_menu.add_command(label="Open List", command = openList)
+td_file_menu.add_separator()
+td_file_menu.add_command(label="Clear List", command = clearList)
 
 delete_btn = Button(btn_frame, text = "DELETE", command = deleteItem)
 add_btn = Button(btn_frame, text = "ADD", command = addItem)
